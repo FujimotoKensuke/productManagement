@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <title>商品管理システム - 商品登録及び更新画面</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <h3>商品登録</h3>
+                    <p th:if="${message}" th:text="${message}" class="blue" />
+                    <p th:if="${validationError}" th:text="${validationError}">validation error</p>
+                    <form role="form" action="./createAndUpdate" th:action="@{./createAndUpdate}" th:object="${itemCreateForm}" method="post">
+                        <div class="form-group">
+                            <label>商品ID</label>
+                            <input type="text" class="form-control" id="itemId" name="itemId" th:field="*{itemId}"/>
+                            <span th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}">error!</span>
+                        </div>
+                        <div class="form-group">
+                            <label>商品名</label>
+                            <input class="form-control" id="itemName" name="itemName" th:field="*{itemName}"/>
+                            <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}">error!</span>
+                        </div>
+                        <div class="form-group">
+                            <label>価格(円)</label>
+                            <input class="form-control" id="itemPrice" name="itemPrice" th:field="*{itemPrice}"/>
+                            <span th:if="${#fields.hasErrors('itemPrice')}" th:errors="*{itemPrice}">error!</span>
+                        </div>
+                        <table>
+                            <th>
+                                <button type="submit" class="btn btn-success" name="enter">登録</button>
+                                </form>
+                            </th>
+                            <th>
+                                <form action="#" th:action="@{./index}" method="post">
+                                    <button type="submit" class="btn btn-success" >一覧</button>
+                                </form>
+                            </th>
+                        </table>
+                        <div id="disp" class="alert alert-info" hidden="hidden">
+                            <button type="button" class="close"  onclick="closemesaage()">×</button>
+                            <h>登録しました</h>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>

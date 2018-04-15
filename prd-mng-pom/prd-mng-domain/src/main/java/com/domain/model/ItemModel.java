@@ -5,81 +5,81 @@
  */
 package com.domain.model;
 
-import com.common.misc.JankenEnum;
+import com.common.misc.ItemEnum;
 import java.io.Serializable;
 
 /**
- * ユーザー情報モデル
+ * 商品情報モデル
  *
- * @author k_fujimoto
+ * @author kk
  */
-public class UserModel implements Serializable {
+public class ItemModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * ユーザーID
+     * 商品ID
      */
-    private final String userId;
+    private final String itemId;
 
     /**
-     * ユーザー名
+     * 商品名
      */
-    private final String userName;
+    private final String itemName;
 
     /**
-     * コメント
+     * 商品の価格
      */
-    private final String comment;
+    private final int itemPrice;
 
     /**
      * 削除フラグ
      */
-    private final JankenEnum.DeletedFlg deletedFlg;
+    private final ItemEnum.DeletedFlg deletedFlg;
 
     /**
      * バージョン
      */
     private final Long version;
 
-    public UserModel(
+    public ItemModel(
             String userId,
             String userName,
-            String comment,
-            JankenEnum.DeletedFlg deletedFlg,
+            int itemPrice,
+            ItemEnum.DeletedFlg deletedFlg,
             Long version) {
-        this.userId = userId;
-        this.userName = userName;
-        this.comment = comment;
+        this.itemId = userId;
+        this.itemName = userName;
+        this.itemPrice = itemPrice;
         this.deletedFlg = deletedFlg;
         this.version = version;
     }
 
     /**
-     * @return the userId
+     * @return the itemId
      */
-    public String getUserId() {
-        return userId;
+    public String getItemId() {
+        return itemId;
     }
 
     /**
-     * @return the userName
+     * @return the itemName
      */
-    public String getUserName() {
-        return userName;
+    public String getItemName() {
+        return itemName;
     }
 
     /**
-     * @return the comment
+     * @return the itemPrice
      */
-    public String getComment() {
-        return comment;
+    public int getItemPrice() {
+        return itemPrice;
     }
 
     /**
      * @return the deletedFlg
      */
-    public JankenEnum.DeletedFlg getDeletedFlg() {
+    public ItemEnum.DeletedFlg getDeletedFlg() {
         return deletedFlg;
     }
 

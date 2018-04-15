@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/janken.css}"/>
-<title>じゃんけんゲーム</title>
-</head>
-<body>
-    <div class="main">
-        <div class="header">
-            <h1>じゃんけんゲーム</h1>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{/css/janken.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <title>商品管理システム - 開始画面</title>
+    </head>
+    <body>
+        <script type="text/javascript" th:inline="javascript">
+            /*<![CDATA[*/
+            function link(itemId, itemName, itemPrice) {
 
-    <span th:text="${message}">この部分が動的に置き換えられます</span>
+                location.href = "createAndUpdate?itemid=" + itemId + "&itemname=" + itemName + "&itemprice=" + itemPrice;
+            }
+            /*]]>*/
+        </script>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <h3>
+                        <span>商品管理システム</span>
+                    </h3>
+                </div>
+                <div class="col-2">
+                    <table class="itiran">
+                        <td>
+                            <h3 class="text-left text-info">商品一覧</h3>
+                        </td>
+                        <td class="buttonposition">
+                            <form action="#" th:action="@{./createAndUpdate}" method="post">
+                                <button type="submit" name="init" class="btn btn-success" >商品追加</button>
+                            </form>
+                        </td>
+                    </table>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>商品ID</th>
+                                <th>商品名</th>
+                                <th>価格(円)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:onclick="'javascript:link(\'' + ${itemList.itemId} + '\',\'' + ${itemList.itemName} + '\',\'' + ${itemList.itemPrice} + '\');'" th:each="itemList : ${itemList}">
+                                <td th:text="${itemList.itemId}"></td>
+                                <td  th:text="${itemList.itemName}"></td>
+                                <td  th:text="${itemList.itemPrice}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <form action="#" th:action="@{./battle}" method="post">
-            <div class="contents">
-                <button type="submit" class="btn btn-default" >対戦開始</button>
-            </div>
-        </form>
-        <!-- CRUD制御学習用 -->
-        <form action="#" th:action="@{./userCreate}" method="post" >
-            <div class="contents">
-                <button type="submit" name="init" class="btn btn-default" >登録</button>
-            </div>
-        </form>
-    </div>
-</body>
+    </body>
