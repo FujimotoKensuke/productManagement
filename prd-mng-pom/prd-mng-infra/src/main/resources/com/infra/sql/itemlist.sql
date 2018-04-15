@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 /**
- * Author:  k_fujimoto
- * Created: 2018/04/12
+ * Author:  kk
  */
 
-CREATE TABLE `userinfo` (
-  `id` varchar(12) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `comment` varchar(100) DEFAULT NULL,
+CREATE TABLE `itemlist` (
+  `itemid` varchar(12) NOT NULL,
+  `itemname` varchar(255) NOT NULL,
+  `itemprice` int(11) NOT NULL,
   `deletedFlg` int(11) NOT NULL,
   `version` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`itemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.infra.mapper.ItemListMapper">
+    <insert id="insert">
+        INSERT INTO itemlist (itemid, itemname, itemprice, deletedFlg, version)
+        VALUES (#{itemId}, #{itemName}, #{itemPrice}, #{deletedFlg}, #{version})
+    </insert>
+    <select id="selectAll" resultType="com.infra.entity.ItemListEntity">
+        SELECT * FROM itemlist
+    </select>
+    <update id="update">
+        UPDATE itemlist SET 
+        itemname = #{itemName},
+        itemprice = #{itemPrice},
+        deletedFlg = #{deletedFlg},
+        version = #{version}
+        WHERE itemid = #{itemId}
+    </update>
+</mapper>        
